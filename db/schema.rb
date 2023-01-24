@@ -10,25 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_23_213244) do
+
+ActiveRecord::Schema.define(version: 2023_01_24_213224) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "burgers", force: :cascade do |t|
-    t.string "restaurant_id"
+
+  create_table "restaurants", force: :cascade do |t|
     t.string "name"
-    t.float "price"
-    t.string "image"
-    t.string "status"
-    t.string "description"
+    t.string "style"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "restaurants", force: :cascade do |t|
-    t.string "title"
-    t.string "url"
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.integer "restaurant_id"
+    t.integer "user_id"
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -38,7 +41,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_213244) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.integer "burger_id"
+
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
