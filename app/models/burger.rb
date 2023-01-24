@@ -1,2 +1,0 @@
-class Burger < ApplicationRecord
-end
