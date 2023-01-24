@@ -27,10 +27,10 @@ end
     )
   end
 
-    User.create(name: "Nick",username: "captainNick",email: "nick@example.com", password_digest: "password")
-    User.create(name:  "edgar",username: "captainedgar",email: "edgar@example.com", password_digest:"password")
-    User.create(name: "Jeff",username: "burgerJeff",email: "jeff@example.com", password_digest: "password")
-    User.create(name: "Rich",username: "Slickrich",email: "rich@example.com", password_digest: "password")
+    User.create(name: "Nick",username: "captainNick",email: "nick@example.com", password: "password", password_confirmation: "password")
+    User.create(name:  "edgar",username: "captainedgar",email: "edgar@example.com", password:"password",password_confirmation: "password")
+    User.create(name: "Jeff",username: "burgerJeff",email: "jeff@example.com", password: "password",password_confirmation: "password")
+    User.create(name: "Rich",username: "Slickrich",email: "rich@example.com", password: "password",password_confirmation: "password")
   
 
 puts ("seeding done ")
