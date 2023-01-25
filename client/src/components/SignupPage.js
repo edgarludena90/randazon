@@ -1,67 +1,93 @@
-import { React, useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from 'react'
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBInput,
+  MDBIcon,
+  MDBRow,
+  MDBCol,
+  MDBCheckbox
+}
+from 'mdb-react-ui-kit'
 
-const SignupPage = ({ updateUser }) => {
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    const [formData, setFormData] = useState({
-        first_name: '',
-        last_name:'',
-        username: '',
-        email: '',
-        password: '',
-        confirm_password: ''
-    })
-
-    const [errors, setErrors] = useState([])
-    const { first_name, last_name, username, email, password, confirm_password } = formData
-
-    const handleSubmit = (e) => {
+const Signup = ({ user, setUser }) => {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirm_password, setConfirm_Password] = useState('')
+    const [name, setName] = useState('')
+    const [image_url, setImage] = useState('')
+    function handleSubmit(e) {
         e.preventDefault()
-        const newUser = {
-            name,
-            username,
-            email,
-            password,
-            confirm_password
-        }
-        if (password === confirm_password) {
-        fetch('/signup', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newUser)
+
+        fetch("/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password, confirm_password, name, image_url }),
         })
-            .then(res => {
-                if (res.ok) {
-                    res.json().then(user => {
-                        navigate(`/login`)
-                    })
-                } else {
-                    res.json().then(json => setErrors(Object.entries(json.errors)))
-                }
-            })
-        } else setErrors(['Passwords must match!'])
+            .then((r) => r.json())
+            .then((newUser) => setUser(newUser))
     }
-    const changeHandler = (e) => {
-        const { name, value } = e.target
-        setFormData({ ...formData, [name]: value })
-    }
+
 
     return (
         <div>
-            <h1>{location.pathname}</h1>
-            <h2>Create your Randazon Burger Account</h2>
-            <form onSubmit={handleSubmit}>
-                <input placeholder="Name" type="text" name='name' value={name} onChange={changeHandler} />
-                <input placeholder="Username" type="text" name='username' value={username} onChange={changeHandler} />
-                <input placeholder="Email" type="text" name='email' value={email} onChange={changeHandler} />
-                <input placeholder="Password" type="text" name='password' value={password} onChange={changeHandler} />
-                <input placeholder="Confirm Password" type="text" name='confirm_password' value={confirm_password} onChange={changeHandler} />
-                <button type="submit">Signup</button>
-            </form>
-        </div>
+            {user ? (
+                <div>
+                    <p>You are logged in as {user.name}</p>
+                </div>
+            )
+                : (
+                    <div>
+                        <form onSubmit={handleSubmit}>
+                            <MDBContainer fluid className='my-5'>
+
+      <MDBRow className='g-0 align-items-center'>
+        <MDBCol col='6'>
+
+          <MDBCard className='my-5 cascading-right' style={{background: 'hsla(0, 0%, 100%, 0.55)',  backdropFilter: 'blur(30px)'}}>
+            <MDBCardBody className='p-5 shadow-5 text-center'>
+
+              <h2 className="fw-bold mb-5">Sign up now</h2>
+
+              <MDBRow>
+                <MDBCol col='6'>
+                  <MDBInput  onChange={(e) => setName(e.target.value)}
+                                value={name} wrapperClass='mb-4' label='name' id='form1' type='text'/>
+                </MDBCol>
+              </MDBRow>
+
+              <MDBInput onChange={(e) => setUsername(e.target.value)}
+                                value={username} wrapperClass='mb-4' label='username' id='form3'/>
+              <MDBInput onChange={(e) => setPassword(e.target.value)}
+                                                    value={password} wrapperClass='mb-4' label='Password' id='form4' type='password' />
+              <MDBInput onChange={(e) => setConfirm_Password(e.target.value)}
+                                                    value={confirm_password} wrapperClass='mb-4' label='Confirm_Password' id='form4' type='confirm_password' />
+             <MDBInput onChange={(e) => setImage(e.target.value)}
+                                value={image_url} wrapperClass='mb-4' label='Profile Picture URL' id='form4' type='text'/>
+
+              
+
+              <MDBBtn type="submit" className='w-100 mb-4' size='md'>sign up</MDBBtn>
+
+              <div className="text-center">
+
+
+              </div>
+
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+
+      </MDBRow>
+
+    </MDBContainer>
+                        </form>
+                    </div>)
+            }</div>
     )
 }
-
-export default SignupPage
+export default Signup;

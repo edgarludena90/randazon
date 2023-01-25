@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :update, :destroy]
+  before_action :find_restaurant, only: [:show, :update, :destroy]
 
   # GET /restaurants
   def index
@@ -15,9 +15,9 @@ class RestaurantsController < ApplicationController
 
   # POST /restaurants
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = Restaurant.create!(restaurant_params)
 
-    if @restaurant.save
+    if @restaurant
       render json: @restaurant, status: :created, location: @restaurant
     else
       render json: @restaurant.errors, status: :unprocessable_entity
@@ -26,7 +26,7 @@ class RestaurantsController < ApplicationController
 
   # PATCH/PUT /restaurants/1
   def update
-    if @restaurant.update(restaurant_params)
+    if @restaurant.update!(restaurant_params)
       render json: @restaurant
     else
       render json: @restaurant.errors, status: :unprocessable_entity
@@ -40,7 +40,7 @@ class RestaurantsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_restaurant
+    def find_restaurant
       @restaurant = Restaurant.find(params[:id])
     end
 

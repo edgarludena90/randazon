@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import './App.scss';
+import { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import NavBar from "./components/Navbar"
+import Reviews from "./components/Reviews"
+import Home from "./components/Home"
+import User from "./components/User"
+import Restaurants from "./components/Restaurants"
+import Login from "./components/LoginPage"
+import Signup from "./components/SignupPage"
 
-function App() {
+const App = () =>{
+
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    fetch('/me').then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setCurrentUser(user))
+      }
+    });
+  }, []);
+
+
+  function handleLogin(user) {
+    setCurrentUser(user);
+  }
+
+  function handleLogout() {
+    setCurrentUser(null);
+  }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar user={currentUser} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/restaurants" element={<Restaurants />} />
+        <Route path="/user" element={<User user={currentUser} />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} onLogout={handleLogout} user={currentUser} />} />
+        <Route path="/signup" element={<Signup user={currentUser} setUser={handleLogin} />} />
+        <Route path="/restaurants/:id" element={<Reviews user={currentUser} />} />
+      </Routes>
     </div>
   );
 }

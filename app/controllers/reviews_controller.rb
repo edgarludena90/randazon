@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :update, :destroy]
+  before_action :find_review, only: [:show, :update, :destroy]
 
   # GET /reviews
   def index
@@ -15,9 +15,9 @@ class ReviewsController < ApplicationController
 
   # POST /reviews
   def create
-    @review = Review.new(review_params)
+    @review = Review.create!(review_params)
 
-    if @review.save
+    if @review
       render json: @review, status: :created, location: @review
     else
       render json: @review.errors, status: :unprocessable_entity
@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   def update
-    if @review.update(review_params)
+    if @review.update!(review_params)
       render json: @review
     else
       render json: @review.errors, status: :unprocessable_entity
@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_review
+    def find_review
       @review = Review.find(params[:id])
     end
 
