@@ -10,7 +10,12 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1
   def show
-    render json: @review
+    review = Review.find_by(id:params[:id])
+    if review
+      render json: review, include: :restaurants, status: :ok
+    else 
+      render json: {error: "Review not found"}, status: 404
+    end
   end
 
   # POST /reviews

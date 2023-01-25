@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+
   before_action :find_restaurant, only: [:show, :update, :destroy]
 
   # GET /restaurants
@@ -10,42 +11,23 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1
   def show
+
+    restaurant = Restaurant.find_by(id:params[:id])
+    if restaurant
+      render json: restaurant, serializer: RestaurantWithReviewSerializer
+    else 
+      render json: {error: "Review not found"}, status: 404
+
     render json: @restaurant
   end
 
-  # POST /restaurants
-  def create
-    @restaurant = Restaurant.create!(restaurant_params)
-
-    if @restaurant
-      render json: @restaurant, status: :created, location: @restaurant
-    else
-      render json: @restaurant.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /restaurants/1
-  def update
-    if @restaurant.update!(restaurant_params)
-      render json: @restaurant
-    else
-      render json: @restaurant.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /restaurants/1
-  def destroy
-    @restaurant.destroy
+ 
+    
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def find_restaurant
       @restaurant = Restaurant.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def restaurant_params
-      params.require(:restaurant).permit(:name, :style)
     end
 end
