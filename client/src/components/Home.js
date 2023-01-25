@@ -19,28 +19,28 @@ const Home = () => {
                 >
                 </MDBCarouselItem>
                 <MDBCarouselItem
-                    className='w-100  img-home'
+                    className='w-90  img-home'
                     itemId={2}
                     src={chinchorro}
                     alt='...'
                 >
                 </MDBCarouselItem>
                 <MDBCarouselItem
-                    className='w-100  img-home'
+                    className='w-90  img-home'
                     itemId={3}
                     src={pasta}
                     alt='...'
                 >
                 </MDBCarouselItem>
                 <MDBCarouselItem
-                    className='w-100  img-home'
+                    className='w-90  img-home'
                     itemId={4}
                     src={burger}
                     alt='...'
                 >
                 </MDBCarouselItem>
                 <MDBCarouselItem
-                    className='w-100  img-home'
+                    className='w-90  img-home'
                     itemId={5}
                     src={drinks}
                     alt='...'

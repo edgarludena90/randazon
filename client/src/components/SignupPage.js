@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   MDBBtn,
   MDBContainer,
@@ -8,86 +8,117 @@ import {
   MDBIcon,
   MDBRow,
   MDBCol,
-  MDBCheckbox
-}
-from 'mdb-react-ui-kit'
+  MDBCheckbox,
+} from 'mdb-react-ui-kit';
 
 const Signup = ({ user, setUser }) => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirm_password, setConfirm_Password] = useState('')
-    const [name, setName] = useState('')
-    const [image_url, setImage] = useState('')
-    function handleSubmit(e) {
-        e.preventDefault()
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirm_password, setConfirm_Password] = useState('');
+  const [name, setName] = useState('');
+  const [image_url, setImage] = useState('');
+  function handleSubmit(e) {
+    e.preventDefault();
+    e.target.reset();
 
-        fetch("/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ username, password, confirm_password, name, image_url }),
-        })
-            .then((r) => r.json())
-            .then((newUser) => setUser(newUser))
-    }
+    fetch('/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        confirm_password,
+        name,
+        image_url,
+      }),
+    })
+      .then((r) => r.json())
+      .then((newUser) => setUser(newUser));
+  }
 
-
-    return (
+  return (
+    <div>
+      {user ? (
         <div>
-            {user ? (
-                <div>
-                    <p>You are logged in as {user.name}</p>
-                </div>
-            )
-                : (
-                    <div>
-                        <form onSubmit={handleSubmit}>
-                            <MDBContainer fluid className='my-5'>
+          <p>You are logged in as {user.name}</p>
+        </div>
+      ) : (
+        <div>
+          <form onSubmit={handleSubmit}>
+            <MDBContainer fluid className="my-5">
+              <MDBRow className="g-0 align-items-center">
+                <MDBCol col="6">
+                  <MDBCard
+                    className="my-5 cascading-right"
+                    style={{
+                      background: 'hsla(0, 0%, 100%, 0.55)',
+                      backdropFilter: 'blur(30px)',
+                    }}
+                  >
+                    <MDBCardBody className="p-5 shadow-5 text-center">
+                      <h2 className="fw-bold mb-5">Sign up now</h2>
 
-      <MDBRow className='g-0 align-items-center'>
-        <MDBCol col='6'>
+                      <MDBRow>
+                        <MDBCol col="6">
+                          <MDBInput
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
+                            wrapperClass="mb-3"
+                            label="name"
+                            id="form1"
+                            type="text"
+                          />
+                        </MDBCol>
+                      </MDBRow>
 
-          <MDBCard className='my-5 cascading-right' style={{background: 'hsla(0, 0%, 100%, 0.55)',  backdropFilter: 'blur(30px)'}}>
-            <MDBCardBody className='p-5 shadow-5 text-center'>
+                      <MDBInput
+                        onChange={(e) => setUsername(e.target.value)}
+                        value={username}
+                        wrapperClass="mb-3"
+                        label="username"
+                        id="form3"
+                      />
+                      <MDBInput
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        wrapperClass="mb-3"
+                        label="Password"
+                        id="form4"
+                        type="password"
+                      />
+                      <MDBInput
+                        onChange={(e) => setConfirm_Password(e.target.value)}
+                        value={confirm_password}
+                        wrapperClass="mb-4"
+                        label="Confirm_Password"
+                        id="form4"
+                        type="confirm_password"
+                      />
+                      <MDBInput
+                        onChange={(e) => setImage(e.target.value)}
+                        value={image_url}
+                        wrapperClass="mb-4"
+                        label="Profile Picture URL"
+                        id="form4"
+                        type="text"
+                      />
 
-              <h2 className="fw-bold mb-5">Sign up now</h2>
+                      <MDBBtn type="submit" className="w-50 mb-4" size="md">
+                        sign up
+                      </MDBBtn>
 
-              <MDBRow>
-                <MDBCol col='6'>
-                  <MDBInput  onChange={(e) => setName(e.target.value)}
-                                value={name} wrapperClass='mb-4' label='name' id='form1' type='text'/>
+                      <div className="text-center"></div>
+                    </MDBCardBody>
+                  </MDBCard>
                 </MDBCol>
               </MDBRow>
-
-              <MDBInput onChange={(e) => setUsername(e.target.value)}
-                                value={username} wrapperClass='mb-4' label='username' id='form3'/>
-              <MDBInput onChange={(e) => setPassword(e.target.value)}
-                                                    value={password} wrapperClass='mb-4' label='Password' id='form4' type='password' />
-              <MDBInput onChange={(e) => setConfirm_Password(e.target.value)}
-                                                    value={confirm_password} wrapperClass='mb-4' label='Confirm_Password' id='form4' type='confirm_password' />
-             <MDBInput onChange={(e) => setImage(e.target.value)}
-                                value={image_url} wrapperClass='mb-4' label='Profile Picture URL' id='form4' type='text'/>
-
-              
-
-              <MDBBtn type="submit" className='w-100 mb-4' size='md'>sign up</MDBBtn>
-
-              <div className="text-center">
-
-
-              </div>
-
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-
-      </MDBRow>
-
-    </MDBContainer>
-                        </form>
-                    </div>)
-            }</div>
-    )
-}
+            </MDBContainer>
+          </form>
+        </div>
+      )}
+    </div>
+  );
+};
 export default Signup;
