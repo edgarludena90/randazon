@@ -1,56 +1,37 @@
 class ReviewsController < ApplicationController
   before_action :find_review, only: [:show, :update, :destroy]
 
-  # GET /reviews
   def index
-    @reviews = Review.all
-
-    render json: @reviews
+      render json: Review.all
   end
 
-  # GET /reviews/1
   def show
-    review = Review.find_by(id:params[:id])
-    if review
-      render json: review, include: :restaurants, status: :ok
-    else 
-      render json: {error: "Review not found"}, status: 404
-    end
-  end
-
-  # POST /reviews
-  def create
-    @review = Review.create!(review_params)
-
-    if @review
-      render json: @review, status: :created, location: @review
-    else
-      render json: @review.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /reviews/1
-  def update
-    if @review.update!(review_params)
       render json: @review
-    else
-      render json: @review.errors, status: :unprocessable_entity
-    end
   end
 
-  # DELETE /reviews/1
+  def update
+      @review.update!(review_params)
+      render json: @review
+  end
+
   def destroy
-    @review.destroy
+      @review.destroy
+      head :no_content
+  end
+
+  def create
+      review = Review.create!(review_params)
+      render json: review, status: :created
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def find_review
-      @review = Review.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def review_params
-      params.require(:review).permit(:comment, :rating, :restaurant_id, :user_id)
-    end
+  def review_params
+      params.permit(:comment, :rating, :user_id, :restaurant_id)
+  end
+
+  def find_review
+      @review = Review.find(params[:id])
+  end
+  
 end

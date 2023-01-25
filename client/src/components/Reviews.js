@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ReviewCard from "./ReviewCard"
+import ReviewCard from "../components/ReviewCard"
 
 
-const Reviews = ({ user }) => {
+function Reviews({ user }) {
 
     let { id } = useParams();
 
@@ -21,7 +21,7 @@ const Reviews = ({ user }) => {
             .then(r => r.json())
             .then(data => setRestaurant(data)
             )
-    }, [id]);
+    }, []);
 
     function onDelete(deletedReview) {
         const currentRestaurant = { ...restaurant }
@@ -80,7 +80,7 @@ const Reviews = ({ user }) => {
     return (
         <div>
             <h1>{restaurant.name}</h1>
-            {restaurant.image_url ? <img src={`${restaurant.image_url}`}  width="400" height="400" /> : <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" alt= "..." width="400" height="400" /> }
+            {restaurant.image_url ? <img src={`${restaurant.image_url}`} width="400" height="400" /> : <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" width="400" height="400" />}
             <p>{restaurant.description}</p>
             <h3>Reviews</h3>
             {user ?

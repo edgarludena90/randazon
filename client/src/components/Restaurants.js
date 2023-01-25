@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import RestaurantCard from '../components/RestaurantCard';
-// import { Link } from "react-router-dom";
 
 
-const Restaurants = () => {
+function Restaurants() {
 
     const [restaurants, setRestaurants] = useState([])
 

@@ -1,32 +1,22 @@
 class RestaurantsController < ApplicationController
-
-  before_action :find_restaurant, only: [:show, :update, :destroy]
-
-  # GET /restaurants
   def index
-    @restaurants = Restaurant.all
+    render json: Restaurant.all
+end
 
-    render json: @restaurants
-  end
+def show
+    restaurant = Restaurant.find(params[:id])
+    render json: restaurant
+end
 
-  # GET /restaurants/1
-  def show
+def create
+    restaurant = Restaurant.create!(restaurant_params)
+    render json: restaurant, status: :created
+end
 
-    restaurant = Restaurant.find_by(id:params[:id])
-    if restaurant
-      render json: restaurant, serializer: RestaurantWithReviewSerializer
-    else 
-      render json: {error: "Review not found"}, status: 404
+private
 
-    render json: @restaurant
-  end
-
- 
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def find_restaurant
-      @restaurant = Restaurant.find(params[:id])
-    end
+def restaurant_params
+    params.permit(:name, :description, :image_url)
+end
+  
 end

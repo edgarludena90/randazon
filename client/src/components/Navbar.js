@@ -1,7 +1,7 @@
 import {Container, Navbar, Nav} from 'react-bootstrap';
 
 
-const Navigation = ({ user, onLogout, onLogin }) => {
+const Navigation = ({ user, onLogout}) => {
   
   function handleLogout() {
         fetch('/logout', {
@@ -25,7 +25,7 @@ const Navigation = ({ user, onLogout, onLogin }) => {
                 <Nav.Link className="user-nav" href="/Login" >Login</Nav.Link>
                 } 
               <Nav.Link href="/signup">Signup</Nav.Link>
-           <Nav.Link className="user-nae" href="/User">User</Nav.Link>
+           <Nav.Link className="user-name" href="/User">User</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

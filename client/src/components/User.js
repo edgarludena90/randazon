@@ -1,24 +1,6 @@
 import React, { useState, useEffect } from "react"
-import Login from "../components/LoginPage"
 
-const User = () => {
-
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-      fetch("/authorized_user").then((response) => {
-        if (response.ok) {
-          response.json().then((user) => setUser(user));
-        }
-      });
-    }, []);
-  
-    if (user) {
-      return <h2>Welcome, {user.username}!</h2>;
-    } else {
-      return <Login onLogin={setUser} />;
-    }
-      
+function User({ user }) {
     return (
         <div>
             {user ?
@@ -36,6 +18,6 @@ const User = () => {
             }
         </div>
     )
-        }
+}
 
 export default User;

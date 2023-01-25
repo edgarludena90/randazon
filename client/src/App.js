@@ -1,8 +1,7 @@
 import React from "react";
-import './App.scss';
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import NavBar from "./components/Navbar"
+import Navbar from "./components/Navbar"
 import Reviews from "./components/Reviews"
 import Home from "./components/Home"
 import User from "./components/User"
@@ -10,11 +9,12 @@ import Restaurants from "./components/Restaurants"
 import Login from "./components/LoginPage"
 import Signup from "./components/SignupPage"
 
-const App = () =>{
-const [currentUser, setCurrentUser] = useState(null);
+function App() {
+
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    fetch('/authorized_user').then((response) => {
+    fetch('/me').then((response) => {
       if (response.ok) {
         response.json().then((user) => setCurrentUser(user))
       }
@@ -34,7 +34,7 @@ const [currentUser, setCurrentUser] = useState(null);
 
   return (
     <div className="App">
-      <NavBar user={currentUser} />
+      <Navbar user={currentUser} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/restaurants" element={<Restaurants />} />

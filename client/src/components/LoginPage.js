@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-
+import React, { useState} from 'react'
 import pasta from '../assets/pasta.jpg'
 import {
   MDBBtn,
@@ -9,12 +8,11 @@ import {
   MDBCardImage,
   MDBRow,
   MDBCol,
-  MDBInput,
- 
+  MDBInput
 }
 from 'mdb-react-ui-kit';
 
-const Login = ({ user, onLogin, onLogout }) => {
+function Login({ user, onLogin, onLogout }) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
