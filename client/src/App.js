@@ -11,11 +11,10 @@ import Login from "./components/LoginPage"
 import Signup from "./components/SignupPage"
 
 const App = () =>{
-
-  const [currentUser, setCurrentUser] = useState(null);
+const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    fetch('/me').then((response) => {
+    fetch('/authorized_user').then((response) => {
       if (response.ok) {
         response.json().then((user) => setCurrentUser(user))
       }

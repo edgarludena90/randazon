@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   delete '/logout', to:'sessions#destroy' 
   post '/signup', to: 'users#create'
   patch '/update_user', to: 'users#update'
-  delete 'destroy-user', to: 'users#destroy'
+  delete 'destroy_user', to: 'users#destroy'
   get '/authorized_user', to: 'users#show'
 end

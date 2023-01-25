@@ -5,10 +5,9 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBIcon,
   MDBRow,
   MDBCol,
-  MDBCheckbox,
+  
 } from 'mdb-react-ui-kit';
 
 const Signup = ({ user, setUser }) => {

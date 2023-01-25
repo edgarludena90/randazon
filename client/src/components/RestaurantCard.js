@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+
 import { Link } from "react-router-dom";
 import {
   MDBCard,
@@ -6,9 +6,7 @@ import {
   MDBCardText,
   MDBCardBody,
   MDBCardImage,
-  MDBCardFooter,
   MDBCardGroup,
-  MDBRow,
   MDBCol
 } from 'mdb-react-ui-kit';
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import Restaurant from './Restaurants'
+import React, { useState } from 'react'
+
 import pasta from '../assets/pasta.jpg'
 import {
   MDBBtn,
@@ -10,7 +10,7 @@ import {
   MDBRow,
   MDBCol,
   MDBInput,
-  MDBCheckbox
+ 
 }
 from 'mdb-react-ui-kit';
 

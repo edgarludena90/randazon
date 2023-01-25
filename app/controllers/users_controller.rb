@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorized_user, only: [:show, :update, :destroy]
+  before_action :authorize, only: [:show, :update, :destroy]
 
   # GET /users
   def index
@@ -10,6 +10,11 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     user = User.find_by(id:params[:id])
+    if user
+      render json: user
+    else
+      render json: { error: "Not authorized" }, status: :unauthorized
+    end
   end
   # POST /users
   def create
