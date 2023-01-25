@@ -3,11 +3,13 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    render json: User.all
+    user = User.all
+
+    render json: user
   end
   # GET /users/1
   def show
-    render json: current_user, status :ok
+    user = User.find_by(id:params[:id])
   end
   # POST /users
   def create
