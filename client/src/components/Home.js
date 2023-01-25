@@ -12,7 +12,7 @@ const Home = () => {
         <div>
             <MDBCarousel showControls showIndicators>
                 <MDBCarouselItem
-                    className='w-100 d-block'
+                    className='w-100 img-home'
                     itemId={1}
                     src={seafood}
                     alt='...'
