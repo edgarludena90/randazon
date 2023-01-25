@@ -1,0 +1,67 @@
+
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Bayon&family=Bebas+Neue&family=Chonburi&family=Cormorant+SC:wght@300&family=Cutive&family=Fugaz+One&family=Lobster&family=Luckiest+Guy&family=Metrophobic&family=Monoton&family=Notable&family=Pacifico&family=Rakkas&family=Righteous&family=Rubik+Mono+One&family=Silkscreen:wght@400;700&family=Six+Caps&family=Staatliches&family=Yeseva+One&display=swap');
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+
+.user-nav, .user-nae {
+  margin-right: 500px;
+}
+
+.cards {
+  display: flex;
+    justify-content: space-between;
+}
+
+.chinchorro {
+  font-family: "Monoton";
+  font-size: 40px;
+}
+
+.img-home {
+  width: 100vw;
+  height: 90vh;
+}
+
+.carder {
+  a:link {
+      text-decoration: none;
+    }
+    
+
+
+    a:visited {
+      text-decoration: none;
+    }
+
+
+    a:hover {
+      text-decoration: none;
+    }
+
+
+    a:active {
+      text-decoration: none;
+    }
+
+    padding-left: 100;
+
+    color: white;
+}
+
+.link {
+  color:#FFF;
+}
+.link:hover {
+  color:black
+}
+

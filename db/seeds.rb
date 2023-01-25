@@ -14,7 +14,8 @@ puts ("seeding info ")
 5.times do 
   Restaurant.create!(
     name: Faker::Restaurant.name,
-    style: Faker::Restaurant.type
+    style: Faker::Restaurant.type,
+    image_url: Faker::LoremFlickr.image(size:'300x300', search_terms:['restaurant']),
   )
 end
 
@@ -27,10 +28,10 @@ end
     )
   end
 
-    User.create(name: "Nick",username: "captainNick",email: "nick@example.com", password: "password", password_confirmation: "password")
-    User.create(name:  "edgar",username: "captainedgar",email: "edgar@example.com", password:"password",password_confirmation: "password")
-    User.create(name: "Jeff",username: "burgerJeff",email: "jeff@example.com", password: "password",password_confirmation: "password")
-    User.create(name: "Rich",username: "Slickrich",email: "rich@example.com", password: "password",password_confirmation: "password")
+    User.create(name: "Nick",username: "captainNick", image_url: Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg"),email: "nick@example.com", password: "password", password_confirmation: "password")
+    User.create(name:  "edgar",username: "captainedgar",image_url: Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg"),email: "edgar@example.com", password:"password",password_confirmation: "password")
+    User.create(name: "Jeff",username: "burgerJeff",image_url: Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg"),email: "jeff@example.com", password: "password",password_confirmation: "password")
+    User.create(name: "Rich",username: "Slickrich",image_url: Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg"),email: "rich@example.com", password: "password",password_confirmation: "password")
   
 
 puts ("seeding done ")

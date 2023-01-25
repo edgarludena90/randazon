@@ -1,73 +1,90 @@
-import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import Restaurant from './Restaurants'
+import pasta from '../assets/pasta.jpg'
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBRow,
+  MDBCol,
+  MDBInput,
+  MDBCheckbox
+}
+from 'mdb-react-ui-kit';
 
-const LoginPage = ({updateUser}) => {
-    const navigate = useNavigate();
-    const location = useLocation();
+const Login = ({ user, onLogin, onLogout }) => {
 
-    const [formData, setFormData] = useState({
-        username: '',
-        password: ''
-    })
-    const [errors, setErrors] = useState([])
-    const { username, password } = formData
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-    function submitHandler(e) {
+
+    function handleSubmit(e) {
         e.preventDefault()
-        const user = {
-            username,
-            password
-        }
 
-        fetch(`/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(user)
+        fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password }),
         })
-            .then(res => {
-                if (res.ok) {
-                    res.json().then(user => {
-                        updateUser(user)
-                        navigate(`/users/${user.id}`)
-                    })
-                } else {
-                    res.json().then(json => setErrors(json.errors))
-                }
-            })
+            .then((r) => r.json())
+            .then((user) => onLogin(user))
     }
-    const changeHandler = (e) => {
-        const { name, value } = e.target
-        setFormData({ ...formData, [name]: value })
-    }
-    const clickHandler = (e) =>{
-        navigate('/signup')
+
+
+    function handleLogout() {
+        fetch('/logout', {
+            method: "DELETE",
+        }).then((user) => onLogout(user))
     }
 
     return (
-        <div id='login-container'>
-            <h1>{location.pathname}</h1>
-            <form onSubmit={submitHandler}>
-                <label>
-                    Username
-                </label>
-                <input type='text' placeholder="Username" name='username' value={username} onChange={changeHandler} />
-                <br /> <br />
-                <label>
-                    Password
-                </label>
-            
-                <input type='password' placeholder="Password" name='password' value={password} onChange={changeHandler} />
-                <br />
+        <div>
+            {user ? (
+                <div>
+                    <p>Welcome</p>
+                    <button onClick={handleLogout}>Log out</button>
+                </div>
+            )
+                : (
+                    <>
+                        <form onSubmit={handleSubmit}>
+                           <MDBContainer className='my-5'>
+      <MDBCard>
 
-                <input type='submit' value='Log In' />
-            </form>
-            {errors ? <div>{errors}</div> : null}
-            <br />
-            <h3>or</h3>
-            <br />
-            <button onClick={clickHandler}>Signup with Randazon Burger</button>
-        </div>
+        <MDBRow className='g-0 d-flex align-items-center'>
+
+          <MDBCol md='4'>
+            <MDBCardImage src={pasta} alt='phone' className='rounded-t-5 rounded-tr-lg-0' fluid />
+          </MDBCol>
+
+          <MDBCol md='8'>
+
+            <MDBCardBody>
+
+                <MDBInput onChange={(e) => setUsername(e.target.value)}
+                                value={username} wrapperClass='mb-4' label='username' id='form1'/>
+                <MDBInput  onChange={(e) => setPassword(e.target.value)}
+                                value={password} wrapperClass='mb-4' label='Password' id='form2' type='password'/>
+
+              <div className="d-flex justify-content-between mx-4 mb-4"></div>
+
+              <MDBBtn className="mb-4 w-100" onClick={handleSubmit}>Sign in</MDBBtn>
+
+            </MDBCardBody>
+
+          </MDBCol>
+
+        </MDBRow>
+
+      </MDBCard>
+    </MDBContainer>
+                        </form>
+                    </>)
+            }</div>
     )
 }
-
-export default LoginPage;
+export default Login;
