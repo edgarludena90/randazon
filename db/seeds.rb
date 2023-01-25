@@ -15,7 +15,7 @@ puts ("seeding info ")
   Restaurant.create!(
     name: Faker::Restaurant.name,
     style: Faker::Restaurant.type,
-    image_url: Faker::LoremFlickr.colorized_image(size:'300x300', search_terms:['restaurant']),
+    image_url: Faker::LoremFlickr.image(size:'300x300', search_terms:['restaurant']),
   )
 end
 
