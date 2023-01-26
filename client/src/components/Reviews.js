@@ -80,7 +80,7 @@ function Reviews({ user }) {
     return (
         <div>
             <h1>{restaurant.name}</h1>
-            {restaurant.image_url ? <img src={`${restaurant.image_url}`} alt='...'width="600" height="400" className="square rounded-4 border-3 shadow-4" /> : <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" alt='...' width="400" height="400" />}
+            {restaurant.image_url ? <img src={`${restaurant.image_url}`} alt='...'width="600" height="400" className="square border border-dark border-3 rounded-4" /> : <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" alt='...' width="400" height="400" />}
             <p>{restaurant.description}</p>
             <h3>Reviews</h3>
             {user ?
