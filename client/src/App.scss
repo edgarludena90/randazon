@@ -23,8 +23,18 @@
 }
 
 .chinchorro {
-  font-family: "Monoton";
+  font-family: "Rakkas";
   font-size: 40px;
+}
+
+h1 {
+  font-family: "Rakkas";
+  font-size: 40px;
+}
+
+h3 {
+  font-family: "Rakkas";
+  font-size: 20px;
 }
 
 .img-home {
@@ -34,7 +44,7 @@
 
 .carder {
   a:link {
-      text-decoration: none;
+      text-decoration: black;
     }
     
 
@@ -65,3 +75,13 @@
   color:black
 }
 
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #049595;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to top, rgba(4,149,149,1), rgba(51,8,103,1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to top, rgba(4,149,149,1), rgba(51,8,103,1))
+}

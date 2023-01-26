@@ -14,7 +14,7 @@ const Navigation = ({ user, onLogout}) => {
     return (
 
         <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar className="gradient-custom" variant="dark">
         <Container>
            <Navbar.Brand className="chinchorro" href="/">Chinchorro</Navbar.Brand>
            <Nav className="me-auto">

@@ -13,11 +13,11 @@ user3 = User.create(username: "usernam3", password: "abc123", name: "Matt")
 
 puts "seeding Restaurants..."
 
-rest1 = Restaurant.create(name: "Paseos", description: "Carribean Sandwiches", image_url: 'https://media-cdn.tripadvisor.com/media/photo-s/02/db/f9/b9/paseo-caribbean.jpg')
-rest2 = Restaurant.create(name: "Nate's Wings and Waffles", description: "chicken and waffles", image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8jOtirlwKm_hl_xBs3LbGXM2jq0_mClDeBA&usqp=CAU')
-rest3 = Restaurant.create(name: "Mio Posto", description: "Pizza", image_url: 'https://images.squarespace-cdn.com/content/v1/5d487ebf2cc93d000172751a/6a1accca-cc8a-4afc-9a05-bdf08d2ec045/MIO_POSTO_FINALS024.jpg')
-rest4 = Restaurant.create(name: "Wendys", description: "GARBAGE", image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM4I17TJvVGy2hMYNa4hzp_mfbhiq6arWKnQ&usqp=CAU')
-rest5 = Restaurant.create(name: "Taco Bell", description: "Fake Mexican Food", image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsircWBMrofz-5bWbC9dq6b35F0QgrZXra5A&usqp=CAU')
+rest1 = Restaurant.create(name: "Ay Mamita", description: "Carribean Sandwiches", image_url: '/paseo-caribbean.jpg')
+rest2 = Restaurant.create(name: "Nate's Wings and Waffles", description: "chicken and waffles", image_url: '/chicken_waffles.jpg')
+rest3 = Restaurant.create(name: "Mio Posto", description: "Pizza", image_url: '/margherita.jpg')
+rest4 = Restaurant.create(name: "Wendys", description: "Booger", image_url: '/garbage.jpg')
+rest5 = Restaurant.create(name: "Taco Bell", description: "Fake Mexican Food", image_url: '/yuckytaco.jpg')
 
 
 puts "seeding Reviews..."
