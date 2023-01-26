@@ -92,7 +92,7 @@ const ReviewCard = ({ review, user, onDelete, onUpdate }) => {
     );
   } else {
     return (
-      <MDBCard flush background="info" className="text-body my-3">
+      <MDBCard background="info" className="text-body my-3">
         <MDBListGroup>
           <MDBListGroupItem>{review.user.name}</MDBListGroupItem>
           <MDBListGroupItem>Rating: {review.rating}</MDBListGroupItem>

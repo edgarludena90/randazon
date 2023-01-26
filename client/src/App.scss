@@ -23,7 +23,7 @@
 }
 
 .align-items-center{
-  background: #cf9338
+  background: #efe6bb
 }
 
 .chinchorro {
@@ -34,6 +34,12 @@
 h1 {
   font-family: "Rakkas";
   font-size: 40px;
+}
+
+h2{
+
+  font-family: "Rakkas";
+  font-size: 30px;
 }
 
 h3 {
@@ -81,7 +87,7 @@ h3 {
 
 .gradient-custom {
   /* fallback for old browsers */
-  background: #049595;
+  background: #aee9e5;
 
   /* Chrome 10-25, Safari 5.1-6 */
   background: -webkit-linear-gradient(to top, rgba(4,149,149,1), rgba(51,8,103,1));

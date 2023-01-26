@@ -13,11 +13,11 @@ user3 = User.create(username: "usernam3", password: "abc123", name: "Matt")
 
 puts "seeding Restaurants..."
 
-rest1 = Restaurant.create(name: "Ay Mamita", description: "Carribean Sandwiches", image_url: '/paseo-caribbean.jpg')
-rest2 = Restaurant.create(name: "Nate's Wings and Waffles", description: "chicken and waffles", image_url: '/chicken_waffles.jpg')
+rest1 = Restaurant.create(name: "Ay Mamita", description: "Carribean Sandwiches", image_url: '/caribroast.jpg')
+rest2 = Restaurant.create(name: "Nate's Wings and Waffles", description: "chicken and waffles", image_url: '/wingswaffles.jpg')
 rest3 = Restaurant.create(name: "Mio Posto", description: "Pizza", image_url: '/margherita.jpg')
 rest4 = Restaurant.create(name: "Wendys", description: "Booger", image_url: '/garbage.jpg')
-rest5 = Restaurant.create(name: "Taco Bell", description: "Fake Mexican Food", image_url: '/yuckytaco.jpg')
+rest5 = Restaurant.create(name: "Taco Bell", description: "Fake Mexican Food", image_url: '/figtaco.jpg')
 
 
 puts "seeding Reviews..."
