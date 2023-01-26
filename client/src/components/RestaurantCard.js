@@ -15,7 +15,7 @@ import {
 const RestaurantCard = ({ restaurant }) => {
 
   return (
-    <MDBCard className='align-items-center' shadow='2' border='dark' background='info'>
+    <MDBCard className='align-items-center' shadow='0' border='dark'>
       <Link className="link" to={`/restaurants/${restaurant.id}`}>
       <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
         <MDBCardImage src={restaurant.image_url} alt='...' />
