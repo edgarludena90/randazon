@@ -13,7 +13,6 @@ function Reviews({ user }) {
         comment: '',
         rating: '',
     })
-    //const [reviews, setReviews] = useState([])
     let reviews = restaurant.reviews
 
     useEffect(() => {
