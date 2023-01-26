@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import UpdateUser from "./UpdateUser"
 
 function User({ user }) {
     return (
@@ -9,6 +10,9 @@ function User({ user }) {
                     {user.image_url ?
                         <img src={`${user.image_url}`} width='300' height='300' /> :
                         <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg" width='300' height='300' />}
+                    <>
+                    <UpdateUser key={user.id} user={user}/>
+                    </>
                 </div>
 
                 :
