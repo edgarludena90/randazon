@@ -21,11 +21,11 @@ const Navigation = ({ user, onLogout}) => {
            <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/restaurants">Restaurants</Nav.Link>
               {user ?
-                <Nav.Link className="user-nav" href="/Login" onClick={handleLogout} >Logout</Nav.Link> : 
+                <Nav.Link className="user-nav" href="/Login" onClick={handleLogout} >Logout</Nav.Link> :
                 <Nav.Link className="user-nav" href="/Login" >Login</Nav.Link>
-                } 
+                }
               <Nav.Link href="/signup">Signup</Nav.Link>
-           <Nav.Link className="user-name" href="/User">User</Nav.Link>
+           <Nav.Link className="user-name" href="/user">User Profile</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
